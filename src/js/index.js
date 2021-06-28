@@ -3,7 +3,7 @@ import img from "../assets/policial-vetor.svg";
 
 const createTitle = () => {
   const textH1 = document.createElement("h1");
-  textH1.innerText = "WebAPI's";
+  textH1.innerText = "WebAPI's" + process.env.NODE_ENV;
   textH1.classList.add("title");
   return textH1;
 }
