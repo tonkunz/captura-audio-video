@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
 
 require('dotenv').config();
 
@@ -10,6 +11,14 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true
+  },
+  devServer: {
+    host: "0.0.0.0",
+    useLocalIp: true,
+    disableHostCheck: true,
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9999,
   },
   module: {
     rules: [
@@ -44,32 +53,33 @@ module.exports = {
         options: {
           name: "[name].[ext]"
         }
-      }
+      },
+      {
+        test: /\.handlebars$/,
+        loader: "handlebars-loader"
+      },
     ]
   },
-  devServer: {
-    host: "0.0.0.0",
-    useLocalIp: true,
-    disableHostCheck: true,
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9999,
-  },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        handlebarsLoader: {}
+      }
+    }),
     new HtmlWebpackPlugin({
       inject: "body",
       filename: "index.html",
-      template: "./src/index.html",
-      title: "Captura Vídeo e Audio Web API's",
+      template: "./src/index.handlebars",
+      title: "Captura Vídeo e Áudio Web API's",
       minify: {
         removeComments: true,
         collapseWhitespace: true
       }
     }),
     new HtmlWebpackPlugin({
-      inject: false,
+      inject: "body",
       filename: "video.html",
-      template: "./src/pages/video.html",
+      template: "./src/pages/video.handlebars",
       title: "Captura Vídeo",
       minify: {
         removeComments: true,
@@ -78,7 +88,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: "audio.html",
-      template: "./src/pages/audio.html",
+      template: "./src/pages/audio.handlebars",
       title: "Captura Áudio",
       minify: {
         removeComments: true,

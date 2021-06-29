@@ -1,7 +1,6 @@
 import "../styles/styles.scss";
 import img from "../assets/policial-vetor.svg";
 import { getMedia } from "./getMedia";
-import navbarComponent from "./NavbarComponent";
 
 const createTitle = () => {
   const textH1 = document.createElement("h1");
@@ -24,7 +23,6 @@ const btnComponent = () => {
   return btn;
 }
 
-document.body.appendChild(navbarComponent());
 document.body.appendChild(createTitle());
 document.body.appendChild(imgComponent());
 document.body.appendChild(btnComponent());
