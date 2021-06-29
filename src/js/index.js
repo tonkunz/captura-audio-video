@@ -1,9 +1,11 @@
 import "../styles/styles.scss";
 import img from "../assets/policial-vetor.svg";
+import { getMedia } from "./getMedia";
+import navbarComponent from "./NavbarComponent";
 
 const createTitle = () => {
   const textH1 = document.createElement("h1");
-  textH1.innerText = "WebAPI's" + process.env.NODE_ENV;
+  textH1.innerText = "Captura Áudio e Vídeo " + process.env.NODE_ENV;
   textH1.classList.add("title");
   return textH1;
 }
@@ -14,5 +16,15 @@ const imgComponent = () => {
   return elImg;
 }
 
+const btnComponent = () => {
+  const btn = document.createElement("button");
+  btn.innerText = "Capturar Media";
+  btn.type = "button";
+  btn.addEventListener("click", () => getMedia({ video: true }));
+  return btn;
+}
+
+document.body.appendChild(navbarComponent());
 document.body.appendChild(createTitle());
 document.body.appendChild(imgComponent());
+document.body.appendChild(btnComponent());

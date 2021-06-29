@@ -48,15 +48,42 @@ module.exports = {
     ]
   },
   devServer: {
+    host: "0.0.0.0",
+    useLocalIp: true,
+    disableHostCheck: true,
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 9000,
+    port: 9999,
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inject: "body",
       filename: "index.html",
       template: "./src/index.html",
-      title: "Captura Vídeo e Audio Web API's"
+      title: "Captura Vídeo e Audio Web API's",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      filename: "video.html",
+      template: "./src/pages/video.html",
+      title: "Captura Vídeo",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      filename: "audio.html",
+      template: "./src/pages/audio.html",
+      title: "Captura Áudio",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
     }),
     new MiniCssExtractPlugin({
       filename: "styles.css"
