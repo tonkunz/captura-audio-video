@@ -6,16 +6,19 @@ const webpack = require('webpack');
 require('dotenv').config();
 
 module.exports = {
-  entry: "./src/js/index.js",
+  entry: {
+    index: "./src/js/index.js",
+    video: "./src/js/getVideoMedia.js"
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true
   },
   devServer: {
-    host: "0.0.0.0",
-    useLocalIp: true,
-    disableHostCheck: true,
+    // host: "0.0.0.0",
+    // useLocalIp: true,
+    // disableHostCheck: true,
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9999,
@@ -43,7 +46,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"]
+            presets: ["@babel/preset-env"],
           }
         }
       },
@@ -51,7 +54,8 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loader: "file-loader",
         options: {
-          name: "[name].[ext]"
+          name: "[name].[ext]",
+          outputPath: "./assets/"
         }
       },
       {
@@ -67,20 +71,22 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      inject: "body",
       filename: "index.html",
       template: "./src/index.handlebars",
       title: "Captura Vídeo e Áudio Web API's",
+      inject: "body",
+      chunks: ["index"],
       minify: {
         removeComments: true,
         collapseWhitespace: true
       }
     }),
     new HtmlWebpackPlugin({
-      inject: "body",
       filename: "video.html",
       template: "./src/pages/video.handlebars",
       title: "Captura Vídeo",
+      inject: "body",
+      chunks: ["index","video"],
       minify: {
         removeComments: true,
         collapseWhitespace: true
@@ -90,6 +96,15 @@ module.exports = {
       filename: "audio.html",
       template: "./src/pages/audio.handlebars",
       title: "Captura Áudio",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      filename: "assinatura.html",
+      template: "./src/pages/assinatura.handlebars",
+      title: "Captura Assinatura",
       minify: {
         removeComments: true,
         collapseWhitespace: true

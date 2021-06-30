@@ -1,0 +1,28 @@
+/** Capture-video foto styles **/
+.video-section {
+  display: flex;
+  flex-direction: column;
+
+  .preview-capture-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+
+    h3 {
+      text-align: center;
+    }
+
+    #videoElement {
+      width: 500px;
+      height: auto;
+      background-color: #666;
+      border: 10px #333 solid;
+    }
+
+    #capture {
+      width: 500px;
+      height: auto;
+      border: 10px #333 solid;
+    }
+  }
+}
