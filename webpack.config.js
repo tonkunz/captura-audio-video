@@ -8,7 +8,8 @@ require('dotenv').config();
 module.exports = {
   entry: {
     index: "./src/js/index.js",
-    video: "./src/js/getVideoMedia.js"
+    video: "./src/js/getVideoMedia.js",
+    signature: "./src/js/getSignature.js"
   },
   output: {
     filename: "[name].bundle.js",
@@ -96,6 +97,8 @@ module.exports = {
       filename: "audio.html",
       template: "./src/pages/audio.handlebars",
       title: "Captura Áudio",
+      inject: "body",
+      chunks: ["index"],
       minify: {
         removeComments: true,
         collapseWhitespace: true
@@ -105,6 +108,8 @@ module.exports = {
       filename: "assinatura.html",
       template: "./src/pages/assinatura.handlebars",
       title: "Captura Assinatura",
+      inject: "body",
+      chunks: ["index", "signature"],
       minify: {
         removeComments: true,
         collapseWhitespace: true

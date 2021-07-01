@@ -9,8 +9,32 @@
   <title>{{ htmlWebpackPlugin.options.title }}</title>
 
 <body>
-  {{> ../partials/navbar }}
-  <h1>Assinatura Page</h1>
+  <div class="page-container">
+    {{> ../partials/navbar }}
+
+    <section class="content-container">
+      {{!-- <h1>Captura de Assinatura</h1> --}}
+
+      <div id="drawing-container" class="drawing-container">
+        <div class="input-container">
+          <canvas id="drawing-area" class="drawing-area" width="375" height="300" >
+            Ops, seu navegador parece ser muito antigo!
+          </canvas>
+          <div class="drawing-preview">
+            <img id="assinatura-img" src="#" alt="Assinatura vai aqui" width="375" height="300">
+          </div>
+        </div>
+
+        <div class="assinatura-btn-container">
+          <button id="save-button" class="app-btn">Salvar Assinatura</button>
+          <button id="clear-button" class="app-btn">Limpar Preview</button>
+        </div>
+      </div>
+
+    </section>
+
+    {{> ../partials/footer }}
+  </div>
 </body>
 
 </html>
