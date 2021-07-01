@@ -1,5 +1,6 @@
 const video = document.querySelector("#videoElement");
 const capture = document.getElementById("capture");
+const hasAudioSelect = document.getElementById('has-audio');
 
 const listaDownload = document.getElementById('lista-download'); 
 
@@ -9,9 +10,14 @@ const btnStopRecord = document.getElementById('stop-record');
 let cameraStream = null;
 let recorder;
 
-function initPreview() {
+function initPreview(hasAudio) {
+  const constraints = {
+    video: true,
+    audio: hasAudio
+  }
+
   if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia(constraints)
       .then(function (stream) {
         video.srcObject = stream;
         cameraStream = stream;
@@ -51,7 +57,13 @@ function stopRecord() {
 (() => {
   console.log("video module started...");
   btnStopRecord.disabled = true;
-  initPreview();
+  initPreview(false);
+
+  hasAudioSelect.onchange = (e) => {
+    cameraStream.getTracks().forEach(track => track.stop());
+
+    initPreview(e.target.checked);
+  }
 
   btnStartRecord.addEventListener("click", startRecord);
   btnStopRecord.addEventListener("click", stopRecord);
