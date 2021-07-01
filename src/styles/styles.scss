@@ -29,10 +29,19 @@ body {
   background-color: $primary-dark;
   cursor: pointer;
 }
+.app-btn:disabled {
+  background-color: rgb(179, 179, 179);
+  cursor: default;
+}
 
 .h1-title {
   color: $primary;
   text-align: center;
+}
+
+.h3-subtitle {
+  text-align: center;
+  margin-top: 0;
 }
 
 .page-container {
@@ -90,7 +99,7 @@ body {
 
 /**
   Capture-video foto styles
-  Sessão contendo os estilos da página de captura de vídeo
+  Sessão contendo os estilos da página de captura de Foto
 **/
 .video-section {
   display: flex;
@@ -119,16 +128,34 @@ body {
     }
   }
 }
-/** Fim estilos página captura de vídeo **/
+/** Fim estilos página captura de Foto **/
 
 
+/** Captura de vídeo **/
+.btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
 
-/**
-  Captura de áudio page styles
-**/
+.lista-download {
+  display: flex;
+  flex-direction: column;
+  padding: .25rem;
+  list-style: none;
 
-/** Fim estilos página captura áudio
+  h4 {
+    text-align: center;
+  }
 
+  li {
+    border: 1px solid $primary;
+    border-radius: .25rem;
+    padding: .5rem;
+    margin: .5rem;
+  }
+}
+/** Fim captura de vídeo styles **/
 
 
 /**

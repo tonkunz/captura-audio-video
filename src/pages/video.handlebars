@@ -12,7 +12,28 @@
   <div id="page-container" class="page-container">
     {{> ../partials/navbar }}
     <div class="content-container">
-      <h1>GET VÍDEO PAGE</h1>
+
+      <section class="video-section">
+        <div class="preview-capture-container">
+          <div id="container">
+            <h3>Preview</h3>
+            <video autoplay="true" id="videoElement">
+
+            </video>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button id="start-record" type="button" class="app-btn">Iniciar Gravação</button>
+          <button id="stop-record" type="button" class="app-btn">Parar Gravação</button>
+        </div>
+
+        <ul id="lista-download" class="lista-download">
+        <h4>Lista de Gravações</h4>
+
+        </ul>
+      </section>
+
     </div>
     {{> ../partials/footer}}
   </div>
