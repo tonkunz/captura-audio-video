@@ -109,14 +109,3 @@ function saveCanvas() {
   const dataUrl = canvas.toDataURL();
   assinaturaImg.setAttribute("src", dataUrl);
 }
-
-// (() => {
-//   const drawingContainer = document.getElementById('drawing-container');
-
-//   console.log("drawing-container: ", drawingContainer.offsetWidth);
-
-//   window.addEventListener("resize", () => {
-//     canvas.setAttribute("width", canvas.parentNode.offsetWidth);
-//     console.log("offsetWIdht: ", canvas.parentNode.offsetWidth)
-//   })
-// })();

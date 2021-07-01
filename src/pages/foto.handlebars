@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{ htmlWebpackPlugin.options.title }}</title>
+</head>
+
+<body>
+  <div id="page-container" class="page-container">
+  {{> ../partials/navbar }}
+
+  <div class="content-container">
+    <section class="video-section">
+      <div class="preview-capture-container">
+        <div id="container">
+          <h3>Preview</h3>
+          <video autoplay="true" id="videoElement">
+
+          </video>
+        </div>
+
+        <div class="">
+          <h3>Capture</h3>
+          <canvas id="capture" width="1024" height="768"></canvas>
+        </div>
+      </div>
+
+      <button id="btn-capture" type="button" class="app-btn">Capturar imagem</button>
+    </section>
+  </div>
+
+  {{> ../partials/footer}}
+  </div>
+</body>
+
+</html>

@@ -8,7 +8,9 @@ require('dotenv').config();
 module.exports = {
   entry: {
     index: "./src/js/index.js",
-    video: "./src/js/getVideoMedia.js",
+    foto: "./src/js/getFoto.js",
+    video: "./src/js/getVideo.js",
+    audio: "./src/js/getAudio.js",
     signature: "./src/js/getSignature.js"
   },
   output: {
@@ -83,6 +85,17 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
+      filename: "foto.html",
+      template: "./src/pages/foto.handlebars",
+      title: "Captura Foto",
+      inject: "body",
+      chunks: ["index","foto"],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
       filename: "video.html",
       template: "./src/pages/video.handlebars",
       title: "Captura Vídeo",
@@ -98,7 +111,7 @@ module.exports = {
       template: "./src/pages/audio.handlebars",
       title: "Captura Áudio",
       inject: "body",
-      chunks: ["index"],
+      chunks: ["index", "audio"],
       minify: {
         removeComments: true,
         collapseWhitespace: true

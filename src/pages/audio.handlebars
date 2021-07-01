@@ -9,8 +9,13 @@
   <title>{{ htmlWebpackPlugin.options.title }}</title>
 
 <body>
-  {{> ../partials/navbar }}
-  <h1>Áudio Page</h1>
+  <div id="page-container" class="page-container">
+    {{> ../partials/navbar }}
+    <div class="content-container">
+      <h1>GET ÁUDIO PAGE</h1>
+    </div>
+    {{> ../partials/footer}}
+  </div>
 </body>
 
 </html>
